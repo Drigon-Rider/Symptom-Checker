@@ -36,15 +36,14 @@ const BodyMap: React.FC<BodyMapProps> = ({ onSelectBodyPart }) => {
 
   // Updated body map with centered head
   const bodyParts = [
-    { id: "head", name: "Head", path: "M 150,50 A 30,30 0 1 1 150,49.9 Z" },
+    { id: "head", name: "Head", path: "M 150,40 A 30,30 0 1 1 149.9,40 Z" },
     { id: "chest", name: "Chest", path: "M 120,100 L 180,100 L 180,160 L 120,160 Z" },
     { id: "abdomen", name: "Abdomen", path: "M 120,160 L 180,160 L 180,220 L 120,220 Z" },
     { id: "left-arm", name: "Left Arm", path: "M 120,100 L 100,100 L 70,180 L 90,190 L 120,160 Z" },
     { id: "right-arm", name: "Right Arm", path: "M 180,100 L 200,100 L 230,180 L 210,190 L 180,160 Z" },
-    { id: "left-leg", name: "Left Leg", path: "M 120,220 L 140,220 L 130,320 L 110,320 Z" },
-    { id: "right-leg", name: "Right Leg", path: "M 160,220 L 180,220 L 190,320 L 170,320 Z" },
+    { id: "left-leg", name: "Left Leg", path: "M 120,220 L 140,220 L 135,320 L 115,320 Z" },
+    { id: "right-leg", name: "Right Leg", path: "M 160,220 L 180,220 L 185,320 L 165,320 Z" }
   ];
-
   return (
     <div className="flex flex-col items-center">
       <div className="mb-6 text-center">

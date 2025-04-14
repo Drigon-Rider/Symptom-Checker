@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { AlertTriangle, ArrowLeft, Printer } from 'lucide-react';
-import { Symptom } from './SymptomChecker';
+import { Symptom } from './SymptomChecker'; 
 
 // Mock data for potential conditions
 // In a real app, this would come from your Flask backend

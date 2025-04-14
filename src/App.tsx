@@ -5,7 +5,8 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import SymptomChecker from './pages/SymptomChecker';
 import Results from './pages/Results';
-
+import PaymentSuccess from './Payment/PaymentSuccess';
+import PaymentFailure from './Payment/PaymentFailure';
 function App() {
   return (
     <Router>
@@ -16,6 +17,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/symptom-checker" element={<SymptomChecker />} />
             <Route path="/results" element={<Results />} />
+            <Route path="/paymentsuccess" element={<PaymentSuccess />} />
+            <Route path="/paymentfailure" element={<PaymentFailure />} />
           </Routes>
         </main>
         <Footer />

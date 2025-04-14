@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import BodyMap from '../components/BodyMap';
 import SymptomForm from '../components/SymptomForm';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import PaymentGateway from '../Payment/PaymentGateway';
 
 // Define the symptom type
 export type Symptom = {
@@ -19,6 +20,7 @@ const SymptomChecker = () => {
   const [step, setStep] = useState(1);
   const [selectedBodyPart, setSelectedBodyPart] = useState<string | null>(null);
   const [symptoms, setSymptoms] = useState<Symptom[]>([]);
+  const [amount, setAmount] = useState(0); 
 
   const handleBodyPartSelect = (bodyPart: string) => {
     setSelectedBodyPart(bodyPart);
@@ -27,15 +29,13 @@ const SymptomChecker = () => {
 
   const handleAddSymptom = (symptom: Symptom) => {
     setSymptoms([...symptoms, symptom]);
+    setAmount(amount + 100); 
     setStep(3);
   };
 
   const handleSubmit = async () => {
     try {
-      // In a real app, you would send this data to your Flask backend
       console.log('Submitting symptoms to backend:', symptoms);
-      
-      // For now, we'll just navigate to the results page with the data in state
       navigate('/results', { state: { symptoms } });
     } catch (error) {
       console.error('Error submitting symptoms:', error);
@@ -109,16 +109,22 @@ const SymptomChecker = () => {
               >
                 + Add Another Symptom
               </button>
-              
-              <button
-                onClick={handleSubmit}
-                disabled={symptoms.length === 0}
-                className={`bg-green-600 text-white py-2 px-6 rounded-lg ${
-                  symptoms.length === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-700'
-                }`}
-              >
-                Get Results
-              </button>
+                <div className="flex flex-col items-end bg-gray-100 p-4 rounded-lg shadow-md">
+                <p className="text-lg font-semibold text-gray-700 mb-2">
+                  Fees: <span className="text-green-600">Rs.{amount}</span>
+                </p>
+                      <PaymentGateway amount={amount} symptoms={symptoms} />
+                {/* Uncomment this button if needed */}
+                {/* <button
+                  onClick={handleSubmit}
+                  disabled={symptoms.length === 0}
+                  className={`mt-4 bg-green-600 text-white py-2 px-6 rounded-lg ${
+                    symptoms.length === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-700'
+                  }`}
+                >
+                  Get Results
+                </button> */}
+              </div>
             </div>
           </div>
         )}
